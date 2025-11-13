@@ -1,0 +1,57 @@
+<?php
+// index.php
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Lecturer Daily Presence with Photo & Signature</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Lecturer Daily Presence Form</h1>
+
+    <form action="save.php">
+      <label>Lecturer ID Type</label>
+      <select name="id_type" required>
+        <option value="">-- Select ID Type --</option>
+        <option value="Staff ID">Staff ID</option>
+        <option value="National ID">National ID</option>
+        <option value="Passport">Passport</option>
+        <option value="Driver's License">Driver's License</option>
+      </select>
+
+      <label>Full Name</label>
+      <input type="text" name="name" required>
+
+      <label>ID Number</label>
+      <input type="text" name="id_number" required>
+
+      <label>Current Date & Time</label>
+      <input type="text" id="datetime" readonly>
+
+      <h3>📷 Capture Lecturer Photo</h3>
+      <video id="video" width="250" height="180" autoplay></video><br>
+      <button type="button" id="captureBtn">📸 Capture Photo</button><br>
+      <canvas id="photoCanvas" width="250" height="180" style="display:none;border:1px solid #ccc;margin-top:10px;"></canvas>
+      <input type="hidden" name="photo_data" id="photoData">
+
+      <h3>🖋️ Signature</h3>
+      <canvas id="signatureCanvas" width="250" height="120" style="border:1px solid #ccc;"></canvas><br>
+      <button type="button" id="clearSignature">Clear Signature</button>
+      <input type="hidden" name="signature_data" id="signatureData">
+
+      <div class="actions">
+        <button type="submit">Submit Presence</button>
+        <a href="view.php" class="button secondary">View Records</a>
+      </div>
+    </form>
+
+    <div id="message"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
